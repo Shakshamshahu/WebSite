@@ -9,19 +9,20 @@ export default async function handler(req, res) {
 
     const response = await client.responses.create({
       model: "gpt-4.1-mini",
-      input: "Hello"
+      input: "Say hello in one sentence"
     });
 
     res.status(200).json({
-      result: response.output_text
+      text: response.output_text
     });
 
   } catch (error) {
 
-    console.error("API ERROR:", error);
+    console.error(error);
 
     res.status(500).json({
-      error: "Internal Server Error"
+      error: "Server error"
     });
+
   }
 }
