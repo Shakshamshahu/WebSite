@@ -7,30 +7,39 @@ app.use(cors());
 app.use(express.json());
 
 const openai = new OpenAI({
-  apiKey: "YOUR_OPENAI_KEY"
+  apiKey: process.env.OPENAI_API_KEY
 });
 
 app.post("/api/generate", async (req, res) => {
-  const { text } = req.body;
+  try {
+    const { text } = req.body;
 
-  const completion = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages: [
-      {
-        role: "system",
-        content: "Extract portfolio JSON with name, title, summary, skills array."
-      },
-      {
-        role: "user",
-        content: text
-      }
-    ],
-    response_format: { type: "json_object" }
-  });
+    if (!text) {
+      return res.status(400).json({ error: "Text is required" });
+    }
 
-  res.json(JSON.parse(completion.choices[0].message.content));
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        {
+          role: "system",
+          content: "Extract portfolio JSON with name, title, summary, skills array."
+        },
+        {
+          role: "user",
+          content: text
+        }
+      ],
+      response_format: { type: "json_object" }
+    });
+
+    const result = JSON.parse(completion.choices[0].message.content);
+    res.json(result);
+
+  } catch (error) {
+    console.error("Error generating portfolio:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
-});
+export default app;
