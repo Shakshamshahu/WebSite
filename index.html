@@ -1,0 +1,1087 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Home</title>
+
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+            <style>
+            :root {  --color-primary: #00BFFF;  --color-secondary: #7C3AED;  --color-accent: #ffffff;  --color-background: #0D1117;  --color-text: #ffffff;  --font-heading: 'Roboto', sans-serif;  --font-body: 'Open Sans', sans-serif;  --radius-base: 0.75rem;}
+        </style>
+    
+            <script>
+            tailwind.config = { theme: { extend: { colors: { primary: 'var(--color-primary)', secondary: 'var(--color-secondary)', accent: 'var(--color-accent)', background: 'var(--color-background)', text: 'var(--color-text)' }, fontFamily: { heading: 'var(--font-heading)', body: 'var(--font-body)' }, borderRadius: { base: 'var(--radius-base)' } } } };
+        </script>
+    
+</head>
+
+<body>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wb-nav {
+            background-color: #fff;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #ddd;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 55px;
+            z-index: 999999999999999999;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            margin-left: 1rem;
+        }
+
+        .navbar-brand img {
+            height: 35px;
+            width: auto;
+        }
+
+        .badge {
+            background-color: #333;
+            color: #fff;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 50px;
+            margin-left: 0.5rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .publishbtn {
+            color: #fff;
+            background: #00F260;
+            background: -webkit-linear-gradient(to right, #0575E6, #00F260);
+            background: linear-gradient(to right, #0575E6, #00F260);
+            border: 0;
+            transition: all 0.3s ease-in-out;
+            padding: 5px 15px;
+            border-radius: 50px;
+            border: 1px solid #ddd;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        .publishbtn:hover {
+            box-shadow: rgba(6, 252, 59, 0.16) 0px 6px 6px, rgba(42, 255, 220, 0.23) 0px 6px 6px;
+        }
+
+        .preview-loader {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .preview-loader.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .text-white {
+            color: #fff;
+            font-weight: 600;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #ddd;
+            border-top-color: #0d6efd;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <div id="publishLoader" class="preview-loader flex-column">
+        <div class="spinner"></div>
+        <div class="fw-bold small mt-2 text-white">Publishing your Website...</div>
+    </div>
+
+    <nav class="wb-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a class="navbar-brand" href="https://websites.ly/dashboard">
+                    <img src="https://websites.ly/images/logo.png" alt="website.ly">
+                    <span class="badge">Website Preview</span>
+                </a>
+            </div>
+            <div class="nav-right">
+                            <form action="https://websites.ly/multipage/publish/611e067b-3303-4660-94ef-4d78e5871374" method="POST" id="publishForm">
+                                <input type="hidden" name="_token" value="qRdnZaxhGSr7eMmzbjPA715OBP8WSpniyriXH3YM" autocomplete="off">                                <button class="publishbtn border-0" type="submit">
+                                    <i class="bi bi-send"></i> Publish
+                                </button>
+                            </form>
+                                                                        </div>
+        </div>
+    </nav>
+
+    <main style="margin-top: 55px">
+
+                    <section class="">
+                <section id="hero-login-section" class="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[var(--color-background)] text-[var(--color-text)] font-[family-name:var(--font-body)]">
+    
+    <!-- Background Ambient Glows -->
+    <div class="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-[var(--color-primary)] opacity-20 blur-[120px] rounded-full mix-blend-screen animate-pulse"></div>
+    <div class="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-[var(--color-secondary)] opacity-15 blur-[120px] rounded-full mix-blend-screen"></div>
+
+    <!-- Navbar Placeholder (Minimal for Login Page) -->
+    <nav class="absolute top-0 left-0 w-full p-6 flex justify-between items-center z-20 max-w-7xl mx-auto">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 rounded-[var(--radius-base)] bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] flex items-center justify-center shadow-lg shadow-[var(--color-primary)]/20">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+            </div>
+            <span class="text-xl font-bold font-[family-name:var(--font-heading)] tracking-tight">AIPortfolio</span>
+        </div>
+    </nav>
+
+    <!-- Main Content Grid -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center h-full pt-20 pb-12">
+        
+        <!-- Left Column: Value Prop -->
+        <div class="lg:col-span-7 flex flex-col gap-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 w-fit mx-auto lg:mx-0 backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-[var(--color-primary)] animate-pulse"></span>
+                <span class="text-xs font-medium tracking-wide uppercase text-[var(--color-primary)]">AI-Powered Portfolio Builder</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-[family-name:var(--font-heading)] leading-tight">
+                Your resume deserves <br class="hidden lg:block">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)]">more than a PDF.</span>
+            </h1>
+            
+            <p class="text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                Transform your static resume into a stunning, recruiter-ready portfolio website in seconds. Join 10,000+ developers landing top jobs with AIPortfolio.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 mt-4 justify-center lg:justify-start">
+                <div class="flex -space-x-3 items-center">
+                    <img class="w-10 h-10 rounded-full border-2 border-[var(--color-background)]" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=64&amp;h=64" alt="User" onerror="this.onerror=null; this.src='https://websites.ly/images/no-img.png';">
+                    <img class="w-10 h-10 rounded-full border-2 border-[var(--color-background)]" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=64&amp;h=64" alt="User" onerror="this.onerror=null; this.src='https://websites.ly/images/no-img.png';">
+                    <img class="w-10 h-10 rounded-full border-2 border-[var(--color-background)]" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=64&amp;h=64" alt="User" onerror="this.onerror=null; this.src='https://websites.ly/images/no-img.png';">
+                    <div class="w-10 h-10 rounded-full border-2 border-[var(--color-background)] bg-gray-800 flex items-center justify-center text-xs font-bold text-white">+2k</div>
+                </div>
+                <div class="flex flex-col justify-center text-left">
+                    <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                    <span class="text-xs text-gray-500">Rated 4.9/5 by developers</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Login Card -->
+        <div class="lg:col-span-5 w-full">
+            <div class="relative group">
+                <!-- Card Glow Effect -->
+                <div class="absolute -inset-1 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] rounded-[var(--radius-base)] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                
+                <!-- Card Content -->
+                <div class="relative bg-[#161b22] border border-white/10 rounded-[var(--radius-base)] p-8 shadow-2xl backdrop-blur-xl">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-bold font-[family-name:var(--font-heading)] text-white">Welcome Back</h2>
+                        <p class="text-sm text-gray-400 mt-2">Sign in to access your portfolio dashboard</p>
+                    </div>
+                    <div id="login-page">
+                        <!-- Your login form or Google login button -->
+                         <!-- Google Login Button -->
+                    <button id="google-login-btn" class="w-full flex items-center justify-center gap-3 bg-white text-gray-900 hover:bg-gray-100 font-medium py-3 px-4 rounded-[var(--radius-base)] transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg mb-6">
+                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="w-5 h-5" onerror="this.onerror=null; this.src='https://websites.ly/images/no-img.png';">
+                        <span>Login with Google</span>
+                    </button>
+                    </div>
+                    
+
+                    <div class="relative flex py-2 items-center mb-6">
+                        <div class="flex-grow border-t border-gray-700"></div>
+                        <span class="flex-shrink-0 mx-4 text-gray-500 text-xs uppercase tracking-wider">Or continue with email</span>
+                        <div class="flex-grow border-t border-gray-700"></div>
+                    </div>
+
+                    <!-- Email Form -->
+                    <form id="login-form" class="space-y-4">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-400 mb-1">Email Address</label>
+                            <input type="email" id="email" class="w-full bg-[#0D1117] border border-gray-700 rounded-[var(--radius-base)] px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all" placeholder="dev@example.com" required>
+                        </div>
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-gray-400 mb-1">Password</label>
+                            <input type="password" id="password" class="w-full bg-[#0D1117] border border-gray-700 rounded-[var(--radius-base)] px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all" placeholder="••••••••" required>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-sm">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 rounded border-gray-700 bg-[#0D1117] text-[var(--color-primary)] focus:ring-offset-0 focus:ring-[var(--color-primary)]">
+                                <span class="text-gray-400">Remember me</span>
+                            </label>
+                            <a href="#" class="text-[var(--color-primary)] hover:text-[var(--color-secondary)] transition-colors">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white font-bold py-3 px-4 rounded-[var(--radius-base)] shadow-lg shadow-[var(--color-primary)]/20 hover:shadow-[var(--color-primary)]/40 hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2">
+                            <span>Sign In</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                    </form>
+
+                    <div class="mt-6 text-center text-sm text-gray-500">
+                        Don't have an account? <a href="#" class="text-white hover:text-[var(--color-primary)] font-medium transition-colors">Sign up for free</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal Overlay (Hidden by default) -->
+    <div id="login-form" id="login-success-modal" class="absolute inset-0 z-50 flex items-center justify-center bg-[#0D1117]/90 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="bg-[#161b22] border border-[var(--color-primary)]/30 p-8 rounded-[var(--radius-base)] shadow-2xl text-center transform scale-95 transition-transform duration-500" id="success-card">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--color-primary)]/20 flex items-center justify-center">
+                <svg class="w-8 h-8 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">Login Successful</h3>
+            <p class="text-gray-400">Redirecting to upload dashboard...</p>
+        </div>
+    </div>
+
+    
+</section>
+            </section>
+                    <section class="">
+                <section id="ai-resume-upload-section" class="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-[var(--color-background)] text-[var(--color-text)] py-20 px-4">
+    
+    <!-- Ambient Background Glows -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-[var(--color-primary)] rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-pulse"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-[var(--color-secondary)] rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
+
+    <!-- Main Card Container -->
+    <div class="relative w-full max-w-lg z-10">
+        <!-- Glassmorphism Card -->
+        <div class="backdrop-blur-xl bg-[#161b22]/80 border border-white/10 rounded-[var(--radius-base)] shadow-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_30px_-5px_rgba(0,191,255,0.15)]">
+            
+            <!-- Header -->
+            <div class="p-8 border-b border-white/5 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] mb-4 shadow-[0_0_15px_rgba(0,191,255,0.3)]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-[var(--font-heading)] font-bold text-white mb-2">Upload Your Resume</h2>
+                <p class="text-sm text-gray-400 font-[var(--font-body)]">We accept PDF, DOCX, or TXT (Max 5MB).<br>Our AI will handle the rest.</p>
+            </div>
+
+            <!-- Form Content -->
+            <div class="p-8 space-y-6">
+                
+                <!-- Input Fields -->
+                <div class="space-y-4">
+                    <div class="group">
+                        <label for="candidate-name" class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1 group-focus-within:text-[var(--color-primary)] transition-colors">Full Name</label>
+                        <input type="text" id="candidate-name" class="w-full bg-[#0D1117] border border-gray-700 rounded-[var(--radius-base)] px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all" placeholder="e.g. Alex Dev">
+                    </div>
+                    <div class="group">
+                        <label for="candidate-email" class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1 group-focus-within:text-[var(--color-primary)] transition-colors">Email Address</label>
+                        <input type="email" id="candidate-email" class="w-full bg-[#0D1117] border border-gray-700 rounded-[var(--radius-base)] px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all" placeholder="e.g. alex@example.com">
+                    </div>
+                </div>
+
+                <!-- Drag & Drop Zone -->
+                <div id="drop-zone" class="relative group w-full h-48 border-2 border-dashed border-gray-600 rounded-[var(--radius-base)] flex flex-col items-center justify-center cursor-pointer transition-all duration-300 hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5">
+                    <input type="file" id="file-input" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept=".pdf,.doc,.docx,.txt">
+                    
+                    <!-- Default State -->
+                    <div id="upload-prompt" class="text-center pointer-events-none transition-opacity duration-300">
+                        <svg class="mx-auto h-10 w-10 text-gray-400 mb-3 group-hover:text-[var(--color-primary)] transition-colors" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <p class="text-sm font-medium text-gray-300">Drag &amp; drop your resume here</p>
+                        <p class="text-xs text-gray-500 mt-1">or click to browse files</p>
+                    </div>
+
+                    <!-- Uploading State (Hidden initially) -->
+                    <div id="upload-progress" class="hidden w-full px-8 text-center">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-medium text-[var(--color-primary)]">Uploading...</span>
+                            <span id="progress-text" class="text-xs font-medium text-white">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-1.5 overflow-hidden">
+                            <div id="progress-bar" class="bg-[var(--color-primary)] h-1.5 rounded-full transition-all duration-100 ease-out" style="width: 0%"></div>
+                        </div>
+                        <p id="file-name-display" class="text-xs text-gray-400 mt-2 truncate max-w-[200px] mx-auto"></p>
+                    </div>
+
+                    <!-- Success State (Hidden initially) -->
+                    <div id="upload-success" class="hidden flex-col items-center justify-center text-center">
+                        <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mb-2">
+                            <svg class="w-6 h-6 text-green-500 check-anim" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <p class="text-sm font-bold text-white">Resume Uploaded Successfully</p>
+                        <p id="success-file-name" class="text-xs text-gray-400 mt-1"></p>
+                        <button id="remove-file" class="mt-2 text-xs text-red-400 hover:text-red-300 underline">Remove &amp; Upload New</button>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <div id="error-message" class="hidden text-center text-red-400 text-xs bg-red-500/10 py-2 rounded border border-red-500/20"></div>
+
+                <!-- Action Button -->
+                <button id="generate-btn" disabled class="w-full py-3.5 px-4 rounded-[var(--radius-base)] font-bold text-white bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] shadow-lg shadow-purple-900/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none hover:shadow-[0_0_20px_rgba(124,58,237,0.5)] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 group">
+                    <span id="btn-text">Generate Portfolio</span>
+                    <svg id="btn-icon" class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    <!-- Loading Spinner (Hidden) -->
+                    <svg id="btn-loader" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </button>
+
+                <p class="text-center text-[10px] text-gray-500">
+                    By clicking Generate, you agree to our <a href="#" class="text-gray-400 hover:text-white underline">Terms</a>. 
+                    <span class="block mt-1 flex items-center justify-center gap-1">
+                        <svg class="w-3 h-3" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                        Secure &amp; Private
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inline Styles for specific animations -->
+    <style>
+        @keyframes drawCheck {
+            0% { stroke-dasharray: 100; stroke-dashoffset: 100; }
+            100% { stroke-dasharray: 100; stroke-dashoffset: 0; }
+        }
+        .check-anim path {
+            animation: drawCheck 0.6s ease-out forwards;
+        }
+    </style>
+
+    <!-- Functional Script -->
+    
+</section>
+            </section>
+                    <section class="">
+                <section id="how-it-works-section" class="relative w-full py-24 overflow-hidden bg-[var(--color-background)] text-[var(--color-text)] font-[var(--font-body)]">
+    <!-- Background Ambient Glows -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-[var(--color-primary)]/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-[var(--color-secondary)]/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-20 max-w-3xl mx-auto">
+            <h2 class="text-[var(--color-primary)] font-bold tracking-wider uppercase text-sm mb-3">Simple Workflow</h2>
+            <h3 class="text-4xl md:text-5xl font-[var(--font-heading)] font-bold mb-6 leading-tight">
+                From PDF to Portfolio <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)]">in Minutes</span>
+            </h3>
+            <p class="text-gray-400 text-lg">
+                Stop coding your portfolio from scratch. Let our AI engine convert your existing resume into a high-conversion personal website.
+            </p>
+        </div>
+
+        <!-- Steps Container -->
+        <div class="relative">
+            <!-- Connecting Line (Desktop Only) -->
+            <div class="hidden md:block absolute top-12 left-0 w-full h-1 bg-gray-800 rounded-full -z-10">
+                <div class="h-full w-full bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-primary)] opacity-30"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                
+                <!-- Step 1 -->
+                <div class="step-card group relative flex flex-col items-center text-center">
+                    <div class="relative mb-8">
+                        <!-- Icon Container -->
+                        <div class="w-24 h-24 rounded-[var(--radius-base)] bg-[#161b22] border border-gray-700 flex items-center justify-center relative z-10 group-hover:border-[var(--color-primary)] group-hover:shadow-[0_0_30px_-5px_var(--color-primary)] transition-all duration-500">
+                            <svg class="w-10 h-10 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                        </div>
+                        <!-- Step Number Badge -->
+                        <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-[var(--color-primary)] text-black font-bold flex items-center justify-center border-4 border-[var(--color-background)] z-20">
+                            1
+                        </div>
+                    </div>
+                    <h4 class="text-2xl font-[var(--font-heading)] font-bold mb-3 group-hover:text-[var(--color-primary)] transition-colors">Upload Resume</h4>
+                    <p class="text-gray-400 leading-relaxed">
+                        Drag and drop your existing PDF resume. Our system securely parses your history, skills, and projects instantly.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-card group relative flex flex-col items-center text-center">
+                    <div class="relative mb-8">
+                        <!-- Icon Container -->
+                        <div class="w-24 h-24 rounded-[var(--radius-base)] bg-[#161b22] border border-gray-700 flex items-center justify-center relative z-10 group-hover:border-[var(--color-secondary)] group-hover:shadow-[0_0_30px_-5px_var(--color-secondary)] transition-all duration-500">
+                            <svg class="w-10 h-10 text-[var(--color-secondary)]" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <!-- Step Number Badge -->
+                        <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-[var(--color-secondary)] text-white font-bold flex items-center justify-center border-4 border-[var(--color-background)] z-20">
+                            2
+                        </div>
+                    </div>
+                    <h4 class="text-2xl font-[var(--font-heading)] font-bold mb-3 group-hover:text-[var(--color-secondary)] transition-colors">AI Processing</h4>
+                    <p class="text-gray-400 leading-relaxed">
+                        Our AI analyzes your data, structures it into a developer-friendly format, and generates project descriptions.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-card group relative flex flex-col items-center text-center">
+                    <div class="relative mb-8">
+                        <!-- Icon Container -->
+                        <div class="w-24 h-24 rounded-[var(--radius-base)] bg-[#161b22] border border-gray-700 flex items-center justify-center relative z-10 group-hover:border-white group-hover:shadow-[0_0_30px_-5px_rgba(255,255,255,0.5)] transition-all duration-500">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <!-- Step Number Badge -->
+                        <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-white text-black font-bold flex items-center justify-center border-4 border-[var(--color-background)] z-20">
+                            3
+                        </div>
+                    </div>
+                    <h4 class="text-2xl font-[var(--font-heading)] font-bold mb-3 group-hover:text-white transition-colors">Publish &amp; Share</h4>
+                    <p class="text-gray-400 leading-relaxed">
+                        Review the generated site, customize colors if needed, and deploy instantly to a custom domain or .dev URL.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CTA Area -->
+        <div class="mt-20 text-center">
+            <button class="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-[var(--color-primary)] font-[var(--font-heading)] rounded-[var(--radius-base)] hover:bg-[#0099cc] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-primary)] focus:ring-offset-[#0D1117]">
+                <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
+                <span class="relative flex items-center gap-2">
+                    Start Building Now
+                    <svg class="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </span>
+            </button>
+            <p class="mt-4 text-sm text-gray-500">No credit card required for preview.</p>
+        </div>
+    </div>
+
+    
+</section>
+            </section>
+                    <section class="">
+                <section id="comparison-grid-section" class="relative py-24 overflow-hidden bg-[var(--color-background)] text-[var(--color-text)] font-[var(--font-body)]">
+    <!-- Background Ambient Glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[var(--color-primary)] opacity-10 blur-[120px] rounded-full pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-[600px] h-[400px] bg-[var(--color-secondary)] opacity-10 blur-[100px] rounded-full pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-16 max-w-3xl mx-auto">
+            <h2 class="text-[var(--color-primary)] font-bold tracking-wide uppercase text-sm mb-3">Why Upgrade?</h2>
+            <h3 class="text-4xl md:text-5xl font-[var(--font-heading)] font-bold text-white mb-6 leading-tight">
+                Stop coding your portfolio. <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)]">Start showcasing your work.</span>
+            </h3>
+            <p class="text-gray-400 text-lg">
+                Most developers spend weeks building a portfolio site instead of applying for jobs. AIPortfolio flips the script.
+            </p>
+        </div>
+
+        <!-- Comparison Grid Container -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+            
+            <!-- The Old Way (Pain) -->
+            <div class="group relative p-8 rounded-[var(--radius-base)] border border-gray-800 bg-[#161b22]/80 backdrop-blur-sm transition-all duration-300 hover:border-gray-700">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gray-700 rounded-t-[var(--radius-base)]"></div>
+                
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-300 font-[var(--font-heading)]">Traditional Way</h4>
+                        <p class="text-sm text-gray-500 mt-1">Manual coding &amp; maintenance</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <ul class="space-y-6">
+                    <!-- Item 1 -->
+                    <li class="flex items-start opacity-60 group-hover:opacity-80 transition-opacity">
+                        <svg class="w-6 h-6 text-red-500 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        <div>
+                            <strong class="block text-gray-200">Hours of Development</strong>
+                            <span class="text-sm text-gray-500">Wasting time on CSS bugs instead of interview prep.</span>
+                        </div>
+                    </li>
+                    <!-- Item 2 -->
+                    <li class="flex items-start opacity-60 group-hover:opacity-80 transition-opacity">
+                        <svg class="w-6 h-6 text-red-500 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        <div>
+                            <strong class="block text-gray-200">Generic Templates</strong>
+                            <span class="text-sm text-gray-500">Looks like every other Bootstrap site.</span>
+                        </div>
+                    </li>
+                    <!-- Item 3 -->
+                    <li class="flex items-start opacity-60 group-hover:opacity-80 transition-opacity">
+                        <svg class="w-6 h-6 text-red-500 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        <div>
+                            <strong class="block text-gray-200">Manual Updates</strong>
+                            <span class="text-sm text-gray-500">Editing HTML every time you learn a new skill.</span>
+                        </div>
+                    </li>
+                    <!-- Item 4 -->
+                    <li class="flex items-start opacity-60 group-hover:opacity-80 transition-opacity">
+                        <svg class="w-6 h-6 text-red-500 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        <div>
+                            <strong class="block text-gray-200">No SEO Optimization</strong>
+                            <span class="text-sm text-gray-500">Recruiters can't find you on Google.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- AIPortfolio Way (Gain) -->
+            <div class="relative p-8 rounded-[var(--radius-base)] border border-[var(--color-primary)] bg-[var(--color-background)] shadow-[0_0_30px_-10px_rgba(0,191,255,0.3)] transform lg:-translate-y-4 lg:scale-105 z-20 transition-all duration-300 hover:shadow-[0_0_50px_-10px_rgba(124,58,237,0.4)]">
+                <!-- Gradient Border Top -->
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] rounded-t-[var(--radius-base)]"></div>
+                
+                <div class="absolute -top-3 right-8 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                    Recommended
+                </div>
+
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h4 class="text-2xl font-bold text-white font-[var(--font-heading)]">AIPortfolio</h4>
+                        <p class="text-sm text-[var(--color-primary)] mt-1">AI-Powered Automation</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] flex items-center justify-center text-white shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <ul class="space-y-6">
+                    <!-- Item 1 -->
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--color-primary)]/20 flex items-center justify-center mr-4 mt-0.5">
+                            <svg class="w-4 h-4 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <div>
+                            <strong class="block text-white">Ready in Seconds</strong>
+                            <span class="text-sm text-gray-400">Upload PDF → AI analyzes → Site generated instantly.</span>
+                        </div>
+                    </li>
+                    <!-- Item 2 -->
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--color-primary)]/20 flex items-center justify-center mr-4 mt-0.5">
+                            <svg class="w-4 h-4 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <div>
+                            <strong class="block text-white">Recruiter-Optimized Layout</strong>
+                            <span class="text-sm text-gray-400">Structure designed by hiring managers to highlight skills.</span>
+                        </div>
+                    </li>
+                    <!-- Item 3 -->
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--color-primary)]/20 flex items-center justify-center mr-4 mt-0.5">
+                            <svg class="w-4 h-4 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <div>
+                            <strong class="block text-white">One-Click Updates</strong>
+                            <span class="text-sm text-gray-400">Upload a new resume version and the site auto-updates.</span>
+                        </div>
+                    </li>
+                    <!-- Item 4 -->
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--color-primary)]/20 flex items-center justify-center mr-4 mt-0.5">
+                            <svg class="w-4 h-4 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <div>
+                            <strong class="block text-white">Built-in SEO &amp; Analytics</strong>
+                            <span class="text-sm text-gray-400">Rank higher and see who is viewing your portfolio.</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="mt-8 pt-6 border-t border-gray-800">
+                    <button class="w-full py-3 px-6 rounded-[var(--radius-base)] bg-[var(--color-primary)] hover:bg-[var(--color-secondary)] text-white font-bold transition-all duration-300 shadow-[0_0_15px_rgba(0,191,255,0.4)] hover:shadow-[0_0_25px_rgba(124,58,237,0.6)] flex items-center justify-center group">
+                        Generate My Portfolio
+                        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </button>
+                    <p class="text-center text-xs text-gray-500 mt-3">No credit card required for preview.</p>
+                </div>
+            </div>
+        </div>
+        
+        <section id="portfolio-preview" class="hidden py-20 bg-black text-white">
+            <div class="max-w-4xl mx-auto px-6">
+                <h1 id="p-name" class="text-4xl font-bold"></h1>
+                <p id="p-title" class="text-xl text-gray-400 mt-2"></p>
+                <p id="p-summary" class="mt-6"></p>
+                <div id="p-skills" class="mt-6 flex flex-wrap gap-2"></div>
+            </div>
+          </section>
+
+        <!-- Bottom Trust Badge -->
+        <div class="mt-16 flex justify-center items-center space-x-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+             <!-- Placeholder logos for tech stacks supported -->
+             <span class="text-gray-500 font-bold text-lg">Optimized for:</span>
+             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="h-8 w-8" onerror="this.style.display='none'">
+             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="h-8 w-8" onerror="this.style.display='none'">
+             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS" class="h-8 w-8" onerror="this.style.display='none'">
+             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="h-8 w-8" onerror="this.style.display='none'">
+        </div>
+    </div>
+
+    
+</section>
+            </section>
+                    <section class="">
+                <footer id="ai-portfolio-footer" class="relative bg-[var(--color-background)] text-[var(--color-text)] font-[var(--font-body)] border-t border-white/10 pt-20 pb-10 overflow-hidden">
+    <!-- Decorative Ambient Glow -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-[var(--color-primary)] rounded-full mix-blend-screen filter blur-[128px] opacity-10 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-[var(--color-secondary)] rounded-full mix-blend-screen filter blur-[128px] opacity-10 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+            <!-- Brand Column -->
+            <div class="lg:col-span-4 space-y-6">
+                <a href="#" class="inline-flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-[var(--radius-base)] bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-[var(--color-primary)]/20 group-hover:scale-105 transition-transform duration-300">
+                        AI
+                    </div>
+                    <span class="text-2xl font-[var(--font-heading)] font-bold tracking-tight text-white">AIPortfolio</span>
+                </a>
+                <p class="text-gray-400 leading-relaxed max-w-sm">
+                    Transform your resume into a recruiter-ready portfolio in minutes. Built for developers, powered by intelligent design.
+                </p>
+                <div class="flex gap-4">
+                    <!-- Social Icons -->
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[var(--color-primary)] hover:border-transparent transition-all duration-300" aria-label="Twitter">
+                        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[var(--color-primary)] hover:border-transparent transition-all duration-300" aria-label="GitHub">
+                        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[var(--color-primary)] hover:border-transparent transition-all duration-300" aria-label="LinkedIn">
+                        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Links Column 1 -->
+            <div class="lg:col-span-2 md:col-span-1">
+                <h3 class="text-white font-[var(--font-heading)] font-semibold mb-6">Product</h3>
+                <ul class="space-y-4">
+                    <li><a href="#" class="text-gray-400 hover:text-[var(--color-primary)] transition-colors duration-200">Features</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-[var(--color-primary)] transition-colors duration-200">How it Works</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-[var(--color-primary)] transition-colors duration-200">Examples</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-[var(--color-primary)] transition-colors duration-200">Pricing</a></li>
+                </ul>
+            </div>
+
+            <!-- Links Column 2 -->
+            <div class="lg:col-span-2 md:col-span-1">
+                <h3 class="text-white font-[var(--font-heading)] font-semibold mb-6">Company</h3>
+                <ul class="space-y-4">
+                    <li><a href="#" class="text-gray-400 hover:text-[var(--color-primary)] transition-colors duration-200">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-[var(--color-primary)] transition-colors duration-200">Blog</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-[var(--color-primary)] transition-colors duration-200">Careers</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-[var(--color-primary)] transition-colors duration-200">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Column -->
+            <div class="lg:col-span-4">
+                <h3 class="text-white font-[var(--font-heading)] font-semibold mb-6">Stay Updated</h3>
+                <p class="text-gray-400 mb-4 text-sm">Get the latest updates on portfolio trends and feature releases.</p>
+                <form class="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="Enter your email" class="flex-1 bg-white/5 border border-white/10 rounded-[var(--radius-base)] px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all">
+                    <button type="submit" class="bg-[var(--color-primary)] hover:bg-cyan-400 text-black font-semibold px-6 py-3 rounded-[var(--radius-base)] transition-colors duration-300">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-gray-500 text-sm">
+                © <span id="current-year"></span> AIPortfolio. All rights reserved.
+            </div>
+            <div class="flex gap-6 text-sm">
+                <a href="#" class="text-gray-500 hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="text-gray-500 hover:text-white transition-colors">Terms of Service</a>
+                <a href="#" class="text-gray-500 hover:text-white transition-colors">Cookie Settings</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-[var(--color-secondary)] hover:bg-purple-500 text-white p-3 rounded-full shadow-lg shadow-purple-900/50 translate-y-20 opacity-0 transition-all duration-500 z-50 flex items-center justify-center group" aria-label="Back to top">
+        <svg class="w-6 h-6 group-hover:-translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+    </button>
+
+    
+</footer>
+            </section>
+        
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('publishForm').addEventListener('submit', function() {
+                document.getElementById('publishLoader').classList.add('active');
+            });
+        });
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"5a707339e98c4099b88896fbb9b3e257","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+
+<section id="portfolio-preview" class="hidden py-20 bg-black text-white">
+    <div class="max-w-4xl mx-auto px-6">
+        <h1 id="p-name" class="text-4xl font-bold"></h1>
+        <p id="p-title" class="text-xl text-gray-400 mt-2"></p>
+        <p id="p-summary" class="mt-6"></p>
+        <div id="p-skills" class="mt-6 flex flex-wrap gap-2"></div>
+    </div>
+  </section>
+
+  <script>
+    /* ALL JS WILL GO HERE */
+    const loginForm = document.getElementById("login-form");
+    const successModal = document.getElementById("login-success-modal");
+
+    loginForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        successModal.classList.remove("opacity-0", "pointer-events-none");
+
+        setTimeout(() => {
+            document.getElementById("ai-resume-upload-section")
+                .scrollIntoView({ behavior: "smooth" });
+
+            successModal.classList.add("opacity-0", "pointer-events-none");
+        }, 2000);
+    });
+
+
+const progressBar = document.getElementById("progress-bar");
+const progressText = document.getElementById("progress-text");
+const uploadPrompt = document.getElementById("upload-prompt");
+const uploadProgress = document.getElementById("upload-progress");
+const uploadSuccess = document.getElementById("upload-success");
+const successFileName = document.getElementById("success-file-name");
+
+let resumeText = "";
+
+fileInput.addEventListener("change", async function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    uploadPrompt.classList.add("hidden");
+    uploadProgress.classList.remove("hidden");
+
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += 10;
+        progressBar.style.width = progress + "%";
+        progressText.textContent = progress + "%";
+
+        if (progress >= 100) {
+            clearInterval(interval);
+            uploadProgress.classList.add("hidden");
+            uploadSuccess.classList.remove("hidden");
+            successFileName.textContent = file.name;
+            generateBtn.disabled = false;
+        }
+    }, 150);
+
+    resumeText = await file.text();
+});
+
+generateBtn.addEventListener("click", async function() {
+
+const response = await fetch("/api/generate", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ text: resumeText })
+});
+
+const data = await response.json();
+
+renderPortfolio(data);
+});
+function renderPortfolio(data) {
+
+document.getElementById("portfolio-preview")
+    .classList.remove("hidden");
+
+document.getElementById("p-name").textContent = data.name;
+document.getElementById("p-title").textContent = data.title;
+document.getElementById("p-summary").textContent = data.summary;
+
+const skillsContainer = document.getElementById("p-skills");
+skillsContainer.innerHTML = "";
+
+data.skills.forEach(skill => {
+    const span = document.createElement("span");
+    span.className = "px-3 py-1 bg-purple-600 rounded-full text-sm";
+    span.textContent = skill;
+    skillsContainer.appendChild(span);
+});
+
+document.getElementById("portfolio-preview")
+    .scrollIntoView({ behavior: "smooth" });
+}
+
+    </script>
+
+<script>
+
+    /* =========================================
+       AUTH STATE
+    ========================================= */
+    
+    let isLoggedIn = false;
+    
+    /* =========================================
+       PORTFOLIO STATE
+    ========================================= */
+    
+    let portfolioData = {
+        name: "",
+        title: "",
+        summary: "",
+        skills: []
+    };
+    
+    /* =========================================
+       DOM REFERENCES
+    ========================================= */
+    
+    const loginPage = document.getElementById("login-page");
+    const mainApp = document.getElementById("main-app");
+    
+    const uploadBox = document.getElementById("upload-box");
+    const fileInput = document.getElementById("file-input");
+    
+    const generateBtn = document.getElementById("generate-btn");
+    const btnText = document.getElementById("btn-text");
+    const btnLoader = document.getElementById("btn-loader");
+    
+    /* =========================================
+       LOGIN CONTROL
+    ========================================= */
+    
+    function onLoginSuccess() {
+        isLoggedIn = true;
+    
+        loginPage.classList.add("hidden");
+        mainApp.classList.remove("hidden");
+    }
+    
+    function showLogin() {
+        loginPage.classList.remove("hidden");
+        mainApp.classList.add("hidden");
+    }
+    
+    /* =========================================
+       UPLOAD PROTECTION
+    ========================================= */
+    
+    uploadBox.addEventListener("click", function () {
+    
+        if (!isLoggedIn) {
+            showLogin();
+            return;
+        }
+    
+        fileInput.click();
+    });
+    
+    uploadBox.addEventListener("dragover", function (e) {
+        e.preventDefault();
+    });
+    
+    uploadBox.addEventListener("drop", function (e) {
+        e.preventDefault();
+    
+        if (!isLoggedIn) {
+            showLogin();
+            return;
+        }
+    
+        fileInput.files = e.dataTransfer.files;
+    });
+    
+    /* =========================================
+       VALIDATION
+    ========================================= */
+    
+    function containsEmail(text) {
+        const emailRegex = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i;
+        return emailRegex.test(text);
+    }
+    
+    function containsName(text) {
+    
+        const firstLine = text.split("\n")[0].trim();
+        const namePattern = /^[A-Z][a-z]+\s[A-Z][a-z]+$/;
+    
+        return namePattern.test(firstLine);
+    }
+    
+    /* =========================================
+       GENERATE BUTTON
+    ========================================= */
+    
+    generateBtn.addEventListener("click", async function () {
+    
+        if (!isLoggedIn) {
+            showLogin();
+            return;
+        }
+    
+        if (!fileInput.files.length) {
+            alert("Please upload a resume first.");
+            return;
+        }
+    
+        generateBtn.disabled = true;
+        btnText.innerText = "Processing...";
+        btnLoader.classList.remove("hidden");
+    
+        try {
+    
+            const file = fileInput.files[0];
+            const text = await file.text();
+    
+            if (containsEmail(text) || containsName(text)) {
+                alert("Resume must not contain Name or Email ID.");
+    
+                resetButton();
+                return;
+            }
+    
+            await sendToAI(text);
+    
+        } catch (error) {
+            console.error(error);
+            alert("Something went wrong.");
+            resetButton();
+        }
+    
+    });
+    
+    /* =========================================
+       SEND TO AI
+    ========================================= */
+    
+    async function sendToAI(resumeText) {
+    
+        const response = await fetch("/api/generate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text: resumeText })
+        });
+    
+        if (!response.ok) {
+            alert("AI processing failed.");
+            resetButton();
+            return;
+        }
+    
+        const data = await response.json();
+    
+        portfolioData = data;
+    
+        renderPortfolio(portfolioData);
+    
+        uploadBox.classList.add("hidden");
+    
+        resetButton();
+    }
+    
+    /* =========================================
+       RENDER PORTFOLIO
+    ========================================= */
+    
+    function renderPortfolio(data) {
+    
+        document.getElementById("p-name").textContent = data.name || "";
+        document.getElementById("p-title").textContent = data.title || "";
+        document.getElementById("p-summary").textContent = data.summary || "";
+    
+        const skillsContainer = document.getElementById("p-skills");
+        skillsContainer.innerHTML = "";
+    
+        if (Array.isArray(data.skills)) {
+            data.skills.forEach(skill => {
+                const span = document.createElement("span");
+                span.textContent = skill;
+                span.className = "px-3 py-1 bg-purple-600 text-white rounded-full text-sm";
+                skillsContainer.appendChild(span);
+            });
+        }
+    
+        document.getElementById("portfolio-preview").classList.remove("hidden");
+    }
+    
+    /* =========================================
+       RESET BUTTON STATE
+    ========================================= */
+    
+    function resetButton() {
+        generateBtn.disabled = false;
+        btnText.innerText = "Generate Portfolio";
+        btnLoader.classList.add("hidden");
+    }
+    
+    </script>
+
+</body>
+
+</html>
