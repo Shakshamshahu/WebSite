@@ -446,6 +446,15 @@
 
             </section>
         </section>
+            <section id="portfolio-preview" class="hidden py-20 bg-black text-white">
+                        <div class="max-w-4xl mx-auto px-6">
+                            <h1 id="p-name" class="text-4xl font-bold"></h1>
+                            <p id="p-title" class="text-xl text-gray-400 mt-2"></p>
+                            <p id="p-summary" class="mt-6"></p>
+                            <div id="p-skills" class="mt-6 flex flex-wrap gap-2"></div>
+                        </div>
+                    </section>
+        
         <section class="">
             <section id="how-it-works-section" class="relative w-full py-24 overflow-hidden bg-[var(--color-background)] text-[var(--color-text)] font-[var(--font-body)]">
                 <!-- Background Ambient Glows -->
@@ -721,15 +730,6 @@
                         </div>
                     </div>
 
-                    <section id="portfolio-preview" class="hidden py-20 bg-black text-white">
-                        <div class="max-w-4xl mx-auto px-6">
-                            <h1 id="p-name" class="text-4xl font-bold"></h1>
-                            <p id="p-title" class="text-xl text-gray-400 mt-2"></p>
-                            <p id="p-summary" class="mt-6"></p>
-                            <div id="p-skills" class="mt-6 flex flex-wrap gap-2"></div>
-                        </div>
-                    </section>
-
                     <!-- Bottom Trust Badge -->
                     <div class="mt-16 flex justify-center items-center space-x-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
                         <!-- Placeholder logos for tech stacks supported -->
@@ -843,14 +843,7 @@
         </section>
 
     </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('publishForm').addEventListener('submit', function() {
-                document.getElementById('publishLoader').classList.add('active');
-            });
-        });
-    </script>
+    
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"5a707339e98c4099b88896fbb9b3e257","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 
     <script>
@@ -858,6 +851,7 @@
            ALL JS WILL GO HERE
         ========================================= */
 
+        const API_URL = "http://localhost:5000";
         // Publish form loader
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('publishForm').addEventListener('submit', function() {
@@ -878,6 +872,8 @@
 
         // DOM references
         const loginForm = document.getElementById("login-form");
+        const candidateName = document.getElementById("candidate-name");
+        const candidateEmail = document.getElementById("candidate-email");
         const successModal = document.getElementById("login-success-modal");
         const progressBar = document.getElementById("progress-bar");
         const progressText = document.getElementById("progress-text");
@@ -1025,6 +1021,11 @@
                     resetButton();
                     return;
                 }
+                if (!resumeText) 
+                {
+                alert("Please upload a resume first.");
+                return;
+                }
 
                 await sendToAI(resumeText);
             } catch (error) {
@@ -1035,20 +1036,37 @@
         });
 
         // Send to AI
+        // Send resume text to AI backend
         async function sendToAI(text) {
-            // Mock API response for demo
-            const mockData = {
-                name: "John Doe",
-                title: "Full Stack Developer",
-                summary: "Experienced developer with expertise in JavaScript, React, and Node.js.",
-                skills: ["JavaScript", "React", "Node.js", "Python"]
-            };
-
-            // Simulate delay
-            await new Promise(resolve => setTimeout(resolve, 2000));
-
-            portfolioData = mockData;
-            renderPortfolio(portfolioData);
+            try {
+        
+                const response = await fetch("http://localhost:5000/generate-portfolio", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: candidateName.value,
+                        email: candidateEmail.value,
+                        resumeText: text
+                    })
+                });
+        
+                const data = await response.json();
+        
+                if (!data) {
+                    throw new Error("Invalid response from AI");
+                }
+        
+                portfolioData = data;
+        
+                renderPortfolio(portfolioData);
+        
+            } catch (error) {
+                console.error("AI Error:", error);
+                alert("AI failed to generate portfolio.");
+            }
+        
             resetButton();
         }
 
@@ -1101,3 +1119,4 @@
 </body>
 
 </html>
+
