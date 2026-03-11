@@ -86,7 +86,7 @@ app.post("/generate-portfolio", async (req, res) => {
 });
 
 /* ================================
-   Start Server
+   Start Server Goes Here
 ================================ */
 
 const PORT = 5000;
@@ -94,4 +94,3 @@ const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`AI Portfolio Backend running on port ${PORT}`);
 });
-
