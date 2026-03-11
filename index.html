@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -50,6 +50,10 @@
         body {
             padding: 0;
             margin: 0;
+        }
+
+        main {
+            margin-top: 55px;
         }
 
         .wb-nav {
@@ -132,6 +136,7 @@
             visibility: hidden;
             opacity: 0;
             transition: opacity 0.3s ease;
+            -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
         }
 
@@ -186,7 +191,7 @@
         </div>
     </nav>
 
-    <main style="margin-top: 55px">
+    <main>
 
         <section class="">
             <section id="hero-login-section" class="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[var(--color-background)] text-[var(--color-text)] font-[family-name:var(--font-body)]">
@@ -359,7 +364,7 @@
 
                             <!-- Drag & Drop Zone -->
                             <div id="drop-zone" class="relative group w-full h-48 border-2 border-dashed border-gray-600 rounded-[var(--radius-base)] flex flex-col items-center justify-center cursor-pointer transition-all duration-300 hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5">
-                                <input type="file" id="file-input" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept=".pdf,.doc,.docx,.txt">
+                                <input type="file" id="file-input" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept=".pdf,.doc,.docx,.txt" title="Upload resume file">
 
                                 <!-- Default State -->
                                 <div id="upload-prompt" class="text-center pointer-events-none transition-opacity duration-300">
@@ -1128,5 +1133,6 @@
 </body>
 
 </html>
+
 
 
