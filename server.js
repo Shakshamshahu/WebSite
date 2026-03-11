@@ -4,6 +4,7 @@ dotenv.config();
 import express from "express";
 import OpenAI from "openai";
 import cors from "cors";
+import axios from "axios";
 
 const app = express();
 
@@ -47,67 +48,47 @@ app.get("/", (req, res) => {
 ================================ */
 
 app.post("/generate-portfolio", async (req, res) => {
+
   try {
 
     const { name, email, resumeText } = req.body;
 
-    if (!resumeText) {
-      return res.status(400).json({
-        error: "Resume text is required"
-      });
-    }
+    const response = await axios.post("http://localhost:11434/api/generate", {
+      model: "llama3",
+      prompt: `
+Extract portfolio information from this resume.
 
-    console.log("Generating portfolio for:", name || "Unknown");
+Return JSON format:
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "system",
-          content:
-            "Extract portfolio information from the resume. Return ONLY valid JSON with fields: name, title, summary, skills (array)."
-        },
-        {
-          role: "user",
-          content: resumeText
-        }
-      ],
-      response_format: { type: "json_object" }
+{
+"name":"",
+"title":"",
+"summary":"",
+"skills":[]
+}
+
+Resume:
+${resumeText}
+`,
+      stream: false
     });
 
-    const aiContent = completion.choices[0].message.content;
+    const aiText = response.data.response;
 
-    let result;
-
-    try {
-      result = JSON.parse(aiContent);
-    } catch (parseError) {
-
-      console.error("AI returned invalid JSON:", aiContent);
-
-      return res.status(500).json({
-        error: "AI returned invalid JSON",
-        raw: aiContent
-      });
-    }
-
-    // attach user info
-    result.owner = {
-      name: name || "Unknown",
-      email: email || "Unknown"
-    };
-
-    res.json(result);
+    res.json({
+      result: aiText
+    });
 
   } catch (error) {
 
-    console.error("AI Generation Error:", error);
+    console.error("AI error:", error);
 
     res.status(500).json({
       error: "AI generation failed"
     });
 
   }
+
 });
 
 /* ================================
