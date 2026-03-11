@@ -11,8 +11,8 @@ const app = express();
 app.use(cors());
 
 // Increase request size limit to prevent PayloadTooLargeError
-app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ limit: "10mb", extended: true }));
+app.use(express.json({ limit: "100mb" }));
+app.use(express.urlencoded({ limit: "100mb", extended: true }));
 
 /* ================================
    OpenAI Setup
@@ -94,3 +94,4 @@ const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`AI Portfolio Backend running on port ${PORT}`);
 });
+
