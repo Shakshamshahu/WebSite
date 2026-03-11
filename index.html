@@ -1043,9 +1043,10 @@
         // Send to AI
         // Send resume text to AI backend
         async function sendToAI(text) {
+
             try {
-        
-                const response = await fetch("http://localhost:5000/generate-portfolio", {
+
+                const response = await fetch("http://127.0.0.1:5000/generate-portfolio", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -1056,33 +1057,30 @@
                         resumeText: text
                     })
                 });
-        
+
+                if (!response.ok) {
+                    const err = await response.text();
+                    console.error("Server error:", err);
+                    throw new Error("Request failed");
+                }
+
                 const textResponse = await response.text();
 
-                 let data;
+                const data = JSON.parse(textResponse);
 
-                try {
-                    data = JSON.parse(textResponse);
-                } catch (err) {
-                    console.error("Server returned non-JSON:", textResponse);
-                    throw new Error("Invalid JSON from server");
-                }
-        
-                if (!data) {
-                    throw new Error("Invalid response from AI");
-                }
-        
                 portfolioData = data;
-        
+
                 renderPortfolio(portfolioData);
-        
+
             } catch (error) {
+
                 console.error("AI Error:", error);
                 alert("AI failed to generate portfolio.");
+
             }
-        
+
             resetButton();
-        }
+        }   
 
         // Render portfolio
         function renderPortfolio(data) {
