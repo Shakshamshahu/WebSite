@@ -3,19 +3,43 @@ import OpenAI from "openai";
 import cors from "cors";
 
 const app = express();
+
+/* ================================
+   Middleware
+================================ */
+
 app.use(cors());
-app.use(express.json());
+
+// Increase request size limit to prevent PayloadTooLargeError
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
+
+/* ================================
+   OpenAI Setup
+================================ */
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
-app.post("/api/generate", async (req, res) => {
-  try {
-    const { text } = req.body;
+/* ================================
+   Health Check Route
+================================ */
 
-    if (!text) {
-      return res.status(400).json({ error: "Text is required" });
+app.get("/", (req, res) => {
+  res.send("AI Portfolio Backend Running");
+});
+
+/* ================================
+   Generate Portfolio Route
+================================ */
+
+app.post("/generate-portfolio", async (req, res) => {
+  try {
+    const { name, email, resumeText } = req.body;
+
+    if (!resumeText) {
+      return res.status(400).json({ error: "Resume text is required" });
     }
 
     const completion = await openai.chat.completions.create({
@@ -23,23 +47,50 @@ app.post("/api/generate", async (req, res) => {
       messages: [
         {
           role: "system",
-          content: "Extract portfolio JSON with name, title, summary, skills array."
+          content:
+            "Extract portfolio data from the resume and return ONLY JSON with: name, title, summary, skills (array)."
         },
         {
           role: "user",
-          content: text
+          content: resumeText
         }
       ],
       response_format: { type: "json_object" }
     });
 
-    const result = JSON.parse(completion.choices[0].message.content);
+    const content = completion.choices[0].message.content;
+
+    let result;
+
+    try {
+      result = JSON.parse(content);
+    } catch {
+      return res.status(500).json({
+        error: "AI returned invalid JSON",
+        raw: content
+      });
+    }
+
+    // Optional: attach user info
+    result.owner = {
+      name: name || "Unknown",
+      email: email || "Unknown"
+    };
+
     res.json(result);
 
   } catch (error) {
-    console.error("Error generating portfolio:", error);
-    res.status(500).json({ error: "Internal server error" });
+    console.error("AI Generation Error:", error);
+    res.status(500).json({ error: "AI generation failed" });
   }
 });
 
-export default app;
+/* ================================
+   Start Server
+================================ */
+
+const PORT = 5000;
+
+app.listen(PORT, () => {
+  console.log(`AI Portfolio Backend running on port ${PORT}`);
+});
